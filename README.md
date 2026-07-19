@@ -1,0 +1,60 @@
+# Stream Producer
+
+A dynamic, skill-based alternative to the Stream Helper web app. Instead of clicking
+through a rigid multi-page UI, each production task (topic ideas, titles, thumbnails,
+transcription, ...) is a Claude Code skill you invoke directly, in whatever order suits
+the moment. Every skill writes its result to a numbered, human-readable file inside a
+per-project folder under `projects/`.
+
+## Setup
+
+1. **Python 3.10+** on PATH.
+2. Install script dependencies:
+   ```
+   pip install -r scripts/requirements.txt
+   ```
+3. **ffmpeg** and **yt-dlp** on PATH (only needed for `/transcribe`).
+4. Copy `.env.example` to `.env` and fill in your OpenAI credentials:
+   ```
+   cp .env.example .env
+   ```
+
+## Usage
+
+Open this repo in Claude Code and invoke any skill, optionally passing a project name:
+
+```
+/topic-ideas my-spring-ai-episode
+/youtube-titles my-spring-ai-episode
+/transcribe my-spring-ai-episode --file ./recording.mp4
+/chapters my-spring-ai-episode
+```
+
+If you omit the project name, Claude will infer it from your current directory (if
+you're inside `projects/<name>/`) or ask you.
+
+A project's first skill run creates `projects/<name>/00_project.md` — fill in host/guest
+names, brand notes, and preferences there; every skill reads it for context.
+
+## Output files
+
+Each task writes to one file, prefixed with its workflow-stage number:
+
+| Stage | Files |
+|---|---|
+| 1 Plan | `01_plan_topic-ideas.md`, `01_plan_guest-ideas.md` |
+| 2 Titles | `02_titles_youtube-titles.md`, `02_titles_youtube-description.md`, `02_titles_youtube-tags.md` |
+| 3 Thumbnail | `03_thumbnail_ideas.md`, `03_thumbnail_prompts.md`, `03_thumbnail_image.png` (+ `.md` sidecar) |
+| 4 Announce | `04_announce_linkedin.md`, `04_announce_social.md`, `04_announce_hashtags.md` |
+| 5 Transcribe | `05_transcription_transcript.md` |
+| 6 Wrap-up | `06_wrapup_chapters.md`, `06_wrapup_summary.md` |
+
+See `references/file-naming.md` for details, `references/context-map.md` for what each
+skill reads before generating, and `references/validation-rules.md` for the formatting
+rules applied to tags/hashtags/social posts/chapters.
+
+## Regenerating
+
+Re-running a skill overwrites its output file with a fresh result. To keep a prior
+version, just ask Claude to refine or append instead — it's a normal file edit, no
+special skill needed.

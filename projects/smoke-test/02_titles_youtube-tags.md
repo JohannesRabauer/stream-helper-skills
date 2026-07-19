@@ -1,0 +1,1 @@
+spring boot, java, ai, ollama, local ai, openai, spring ai, llm, java tutorial, backend development, ai integration, chatbot, rest api, java 21, livecoding, software engineering, coding livestream, ai assistant, java developer, spring framework

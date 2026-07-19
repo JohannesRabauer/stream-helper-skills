@@ -1,0 +1,7 @@
+.env
+__pycache__/
+*.pyc
+
+# projects/ IS tracked on purpose: the numbered output files are meant to be
+# git-diffable and versioned. Only keep this ignore if you want a specific
+# project's output kept local-only, e.g.: projects/my-private-episode/
