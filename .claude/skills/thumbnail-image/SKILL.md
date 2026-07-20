@@ -1,6 +1,6 @@
 ---
 name: thumbnail-image
-description: Generate the actual thumbnail PNG from a chosen prompt using the OpenAI Images API directly via a standalone Python script (no Java/server dependency). Use when the user asks to "generate the thumbnail image", "create the thumbnail", or wants to turn a /thumbnail-prompts variant into a real image.
+description: Generate the actual thumbnail PNG from a chosen prompt using the OpenAI Images API directly via a standalone Node.js script (no Java/server dependency). Use when the user asks to "generate the thumbnail image", "create the thumbnail", or wants to turn a /thumbnail-prompts variant into a real image.
 allowed-tools: [Read, Write, Bash, Glob]
 ---
 
@@ -19,7 +19,7 @@ followed by which prompt/strategy to use).
 3. Confirm `.env` in the repo root has `OPENAI_API_KEY` and `OPENAI_IMAGE_MODEL` set.
 4. Run:
    ```
-   python scripts/generate_thumbnail.py --project <name> --prompt "<the chosen prompt text>"
+   node scripts/generate_thumbnail.js --project <name> --prompt "<the chosen prompt text>"
    ```
    This writes the PNG directly to `projects/<name>/03_thumbnail_image.png` and a
    sidecar `03_thumbnail_image.md` (prompt/model/timestamp) — never read the image

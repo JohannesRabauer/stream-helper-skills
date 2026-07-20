@@ -1,4 +1,4 @@
-# Stream Producer
+# Stream Helper Skills
 
 A dynamic, skill-based alternative to the Stream Helper web app. Instead of clicking
 through a rigid multi-page UI, each production task (topic ideas, titles, thumbnails,
@@ -6,15 +6,26 @@ transcription, ...) is a Claude Code skill you invoke directly, in whatever orde
 the moment. Every skill writes its result to a numbered, human-readable file inside a
 per-project folder under `projects/`.
 
+## Install via npm
+
+Add these skills to an existing project with one command:
+
+```
+npx stream-helper-skills [target-dir]
+```
+
+This copies `.claude/skills/`, `scripts/`, `references/`, and `.env.example` into
+`target-dir` (defaults to the current directory). Re-running it later skips files
+that already exist (so it won't clobber edits you've made) unless you pass `--force`.
+
+Alternatively, clone this repo directly and open it in Claude Code — both are
+equivalent ways to get the same skills.
+
 ## Setup
 
-1. **Python 3.10+** on PATH.
-2. Install script dependencies:
-   ```
-   pip install -r scripts/requirements.txt
-   ```
-3. **ffmpeg** and **yt-dlp** on PATH (only needed for `/transcribe`).
-4. Copy `.env.example` to `.env` and fill in your OpenAI credentials:
+1. **Node.js ≥20.12** on PATH. That's it — this package has zero npm dependencies.
+2. **ffmpeg** and **yt-dlp** on PATH (only needed for `/transcribe`).
+3. Copy `.env.example` to `.env` and fill in your OpenAI credentials:
    ```
    cp .env.example .env
    ```

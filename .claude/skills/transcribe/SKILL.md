@@ -1,6 +1,6 @@
 ---
 name: transcribe
-description: Transcribe a local media file or a YouTube URL into a saved transcript for a Stream Producer project, using OpenAI Whisper directly via a standalone Python script (no Java/server dependency). Use when the user asks to "transcribe", "transcribe this recording", "transcribe a YouTube video", or wants a transcript before generating chapters or a summary.
+description: Transcribe a local media file or a YouTube URL into a saved transcript for a Stream Producer project, using OpenAI Whisper directly via a standalone Node.js script (no Java/server dependency). Use when the user asks to "transcribe", "transcribe this recording", "transcribe a YouTube video", or wants a transcript before generating chapters or a summary.
 allowed-tools: [Read, Write, Bash, Glob]
 ---
 
@@ -22,8 +22,8 @@ followed by either a local file path or a YouTube URL).
    will fail clearly if they aren't, just relay that message.
 4. Run one of:
    ```
-   python scripts/transcribe.py --project <name> --file <path> [--language <code>]
-   python scripts/transcribe.py --project <name> --youtube-url <url> [--language <code>]
+   node scripts/transcribe.js --project <name> --file <path> [--language <code>]
+   node scripts/transcribe.js --project <name> --youtube-url <url> [--language <code>]
    ```
    This writes directly to `projects/<name>/05_transcription_transcript.md` — do not
    read the whole transcript back into context, it can be long. The script only

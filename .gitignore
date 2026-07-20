@@ -1,6 +1,6 @@
 .env
-__pycache__/
-*.pyc
+node_modules/
+*.tgz
 
 # projects/ IS tracked on purpose: the numbered output files are meant to be
 # git-diffable and versioned. Only keep this ignore if you want a specific
